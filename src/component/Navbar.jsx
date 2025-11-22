@@ -10,7 +10,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [addressPopupOpen, setAddressPopupOpen] = useState(false);
     const [profileopen, setProfileOpen] = useState(false);
-    const { appData, setAppData,userLocation } = React.useContext(AppDataContext);
+    const { appData, setAppData, userLocation } = React.useContext(AppDataContext);
     const Navigate = useNavigate();
 
     const logoutUser = () => {
@@ -52,14 +52,26 @@ const Navbar = () => {
                         localStorage.getItem("userData") ? (
                             <div className="flex items-center gap-1 cursor-pointer px-3 py-2 rounded-xl transition bg-red-500" style={{ borderRadius: "30px" }} onClick={() => setAddressPopupOpen(true)}>
                                 <FaLocationDot className="text-white text-xl" />
-                                {/* <span className="font-medium text-white">Set Location</span> */}
-                                {
-                                    userLocation ? (
-                                        <span className="font-medium text-white text-sm">{userLocation}</span>
-                                    ) : (
-                                        <span className="font-medium text-white text-sm">Set Location</span>
-                                    )
-                                }
+                                
+                                {userLocation ? (
+                                    <span
+                                        className="font-medium text-white text-sm"
+                                        style={{
+                                            minWidth: "40px",
+                                            maxWidth: "100px",
+                                            display: "inline-block",
+                                            whiteSpace: "nowrap",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis",
+
+                                        }}
+                                    >
+                                        {userLocation.length > 10 ? userLocation.slice(0, 10) + "..." : userLocation}
+                                    </span>
+                                ) : (
+                                    <span className="font-medium text-white text-sm">Set Location</span>
+                                )}
+
                             </div>
                         ) : null
                     }
@@ -199,12 +211,34 @@ const Navbar = () => {
 
                     {
                         localStorage.getItem("userData") ? (
-                            <div className="flex items-center gap-1 cursor-pointer px-3 py-2 rounded-xl transition bg-red-500" style={{ borderRadius: "7px",justifyContent:"center" }} onClick={() => setAddressPopupOpen(true)}>
+                            <div className="flex items-center gap-1 cursor-pointer px-3 py-2 rounded-xl transition bg-red-500" style={{ borderRadius: "7px", justifyContent: "center" }} onClick={() => setAddressPopupOpen(true)}>
                                 <FaLocationDot className="text-white text-xl" />
-                                <span className="font-medium text-white">Set Location</span>
+                                {/* <span className="font-medium text-white">Set Location</span> */}
+
+                                {userLocation ? (
+                                    <span
+                                        className="font-medium text-white text-sm"
+                                        style={{
+                                            minWidth: "40px",
+                                           
+                                            display: "inline-block",
+                                            whiteSpace: "nowrap",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis",
+
+                                        }}
+                                    >
+                                        {userLocation.length > 25 ? userLocation.slice(0, 25) + "..." : userLocation}
+                                    </span>
+                                ) : (
+                                    <span className="font-medium text-white text-sm">Set Location</span>
+                                )}
+
                             </div>
                         ) : null
                     }
+
+
                 </ul>
             </div>
             <AddressPopup open={addressPopupOpen} onClose={() => setAddressPopupOpen(false)} />
