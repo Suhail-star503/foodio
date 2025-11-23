@@ -11,6 +11,7 @@ const AppData = ({ children }) => {
 
     });
     const [userLocation, setUserLocation] = useState(null);
+    const [cartitem, setcartitem] = useState(0);
 
     useEffect(() => {
         // On mount, check localStorage for user data
@@ -21,14 +22,16 @@ const AppData = ({ children }) => {
                 user: JSON.parse(storedUserData),
             });
         }
-    }, []);
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        setcartitem(cartItems.length);
+    }, [cartitem]);
 
    
 
 
 
     return (
-        <AppDataContext.Provider value={{ appData, setAppData, userLocation, setUserLocation }}>
+        <AppDataContext.Provider value={{ appData, setAppData, userLocation, setUserLocation, cartitem, setcartitem }}>
             {children}
         </AppDataContext.Provider>
     );

@@ -1,13 +1,18 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-
 import { Link } from "react-router-dom";
 import { ArrowLeft, Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaLocationDot } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import { AppDataContext } from "../AppData/context";
+import { useContext } from "react";
 
 const Restaurant = () => {
     const { id } = useParams();
+    const { userLocation,setcartitem } = useContext(AppDataContext);
+    const [loadingIndex, setLoadingIndex] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         name: "",
         image: "",
@@ -450,6 +455,35 @@ const Restaurant = () => {
         setData(obj);
     }, [id]);
 
+    const handleBuyNow = (itemname, price, index) => {
+        setLoadingIndex(index);
+        if (userLocation === null) {
+
+            toast.error("Please set your delevery location to add items to cart.", {
+                position: "top-right",
+                theme: "dark"
+            });
+            setLoadingIndex(null);
+            return;
+        }
+
+        setTimeout(() => {
+            // Add to local storage logic here
+            const item = { name: itemname, price };
+            const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+            cart.push(item);
+            localStorage.setItem("cartItems", JSON.stringify(cart));
+
+            toast.success(`${itemname} added to cart!`, {
+                position: "top-right",
+                theme: "dark"
+            });
+            setcartitem(cart.length);
+            setLoadingIndex(null);
+        }, 1000);
+    };
+
+
 
 
 
@@ -533,15 +567,19 @@ const Restaurant = () => {
 
                                 {/* Buy Now Button */}
                                 <button
-                                    className="
-                            bg-white text-red-600 font-semibold 
-                            px-4 py-2 rounded-lg shadow-md
-                            hover:bg-red-100 hover:shadow-lg
-                            transition-all duration-300
-                        "
+                                    disabled={loadingIndex === index}
+                                    className={`
+        bg-white text-red-600 font-semibold 
+        px-4 py-2 rounded-lg shadow-md
+        transition-all duration-300
+        ${loadingIndex === index ? "opacity-50 cursor-not-allowed" : "hover:bg-red-100 hover:shadow-lg"}
+    `}
+                                    onClick={() => handleBuyNow(food.name, food.price, index)}
                                 >
-                                    Buy Now
+                                    {loadingIndex === index ? "Adding..." : "Add to Cart"}
                                 </button>
+
+
                             </div>
                         </div>
                     </div>

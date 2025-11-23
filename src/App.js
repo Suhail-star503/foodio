@@ -7,6 +7,8 @@ import AnimatedLoginPage from "./component/login";
 import ProtectRoot from "./component/protectRoot";
 import Shop from "./pages/shop";
 import Restaurant from "./component/restaurent";
+import Cart from "./component/cart";
+import Help from "./component/help";
  
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route element={<ProtectRoot />}>
             <Route path="/account" element={<Shop/>} />
             <Route path="/restaurant/:id" element={<Restaurant/>} />
+            <Route path="/cart" element={<Cart/>} />
+            <Route path="/help" element={<Help/>} />
           </Route>
 
           {/* Not Found Route */}

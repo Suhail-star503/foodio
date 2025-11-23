@@ -3,8 +3,13 @@ import { motion } from "framer-motion";
 import { Users, Building2, Bike, Star } from "lucide-react";
 import { Utensils, Flame, Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="w-full overflow-x-hidden">
       {/* ================= HERO SECTION ================= */}
@@ -212,22 +217,24 @@ const Home = () => {
               price: "$6.50",
             },
           ].map((dish, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition cursor-pointer"
-            >
-              <img
-                src={dish.img}
-                alt={dish.title}
-                className="w-[100%] h-40 object-contain mx-auto mb-4"
+            <Link to={'/account'} key={index}>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition cursor-pointer"
+              >
+                <img
+                  src={dish.img}
+                  alt={dish.title}
+                  className="w-[100%] h-40 object-contain mx-auto mb-4"
 
-              />
-              <h3 className="text-xl font-semibold mb-2">{dish.title}</h3>
-              <p className="text-red-500 font-bold text-lg">{dish.price}</p>
-            </motion.div>
+                />
+                <h3 className="text-xl font-semibold mb-2">{dish.title}</h3>
+                <p className="text-red-500 font-bold text-lg">{dish.price}</p>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </section>
@@ -261,22 +268,24 @@ const Home = () => {
 
             },
           ].map((dish, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition cursor-pointer"
-            >
-              <img
-                src={dish.img}
-                alt={dish.title}
-                className="w-[100%] h-40 object-contain mx-auto mb-4"
+            <Link to={'/account'} key={index}>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white p-6 rounded-xl shadow hover:shadow-2xl transition cursor-pointer"
+              >
+                <img
+                  src={dish.img}
+                  alt={dish.title}
+                  className="w-[100%] h-40 object-contain mx-auto mb-4"
 
-              />
-              <h3 className="text-xl font-semibold mb-2">{dish.title}</h3>
+                />
+                <h3 className="text-xl font-semibold mb-2">{dish.title}</h3>
 
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </section>
@@ -382,9 +391,9 @@ const Home = () => {
           </motion.h2>
 
           <Link to={'account'}>
-           <button className="px-8 py-3 bg-black/70 backdrop-blur-md text-white rounded-full text-lg hover:bg-black transition inline-flex items-center gap-2">
-            Order Food <Utensils size={20} />
-          </button>
+            <button className="px-8 py-3 bg-black/70 backdrop-blur-md text-white rounded-full text-lg hover:bg-black transition inline-flex items-center gap-2">
+              Order Food <Utensils size={20} />
+            </button>
           </Link>
         </div>
 
