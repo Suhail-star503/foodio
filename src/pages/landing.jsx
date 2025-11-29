@@ -14,7 +14,7 @@ const Home = () => {
     <div className="w-full overflow-x-hidden">
       {/* ================= HERO SECTION ================= */}
       <section className="w-full bg-gradient-to-r from-red-500 to-orange-400 text-white pt-28 pb-20 px-6 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10">
-        {/* Left Text */}
+
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -34,7 +34,7 @@ const Home = () => {
           </Link>
         </motion.div>
 
-        {/* Right Image */}
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -49,12 +49,6 @@ const Home = () => {
 
         </motion.div>
       </section>
-
-
-
-
-
-
 
       {/* ================= FEATURES SECTION ================= */}
       <section className="py-20 px-6 md:px-16 bg-white text-center">
@@ -188,6 +182,8 @@ const Home = () => {
         </motion.div>
       </section>
 
+
+
       {/* ================= POPULAR DISHES SECTION ================= */}
       <section className="py-20 px-6 md:px-16 bg-gray-100 text-center">
         <motion.h2
@@ -289,6 +285,58 @@ const Home = () => {
           ))}
         </div>
       </section>
+
+      {/* here */}
+      <section className="foodio-hero2 relative w-full pt-28 pb-20 px-6 md:px-16 flex flex-col md:flex-row items-center justify-between gap-10">
+
+        {/* Light Orange Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-200 via-orange-100 to-yellow-100 -z-10"></div>
+
+        {/* Background circles */}
+        <div className="bg-shapes2 pointer-events-none">
+          <div className="circle2 c21"></div>
+          <div className="circle2 c22"></div>
+          <div className="circle2 c23"></div>
+          <div className="circle2 c24"></div>
+          <div className="circle2 c25"></div>
+        </div>
+
+        {/* Light blur overlay */}
+        <div className="blur-overlay2 pointer-events-none"></div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1 flex justify-center relative z-10"
+        >
+          <img
+            src="piza.png"
+            alt="Foodio Hero"
+            className="w-[350px] md:w-[450px] drop-shadow-2xl"
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1 relative z-10"
+        >
+          <h1 className="text-2xl md:text-4xl font-extrabold leading-tight mb-6 text-white drop-shadow-md">
+            Delivering Happiness, One Meal at a Time
+          </h1>
+
+          <p className="text-lg md:text-xl mb-8 text-red-900 drop-shadow-sm">
+            India's #1 Food Delivery Service, Bringing Delicious Meals to Your Doorstep with Speed and Care.
+          </p>
+
+
+        </motion.div>
+
+      </section>
+
+
+      {/* end */}
 
 
 

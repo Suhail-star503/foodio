@@ -11,3 +11,71 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* ===================================
+   FOODIO HERO SECTION 2 (SCOPED)
+   =================================== */
+
+.foodio-hero2 {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff7a18 0%, #ff4800 40%, #ff2300 100%);
+  /* Orange to Red nice smooth gradient */
+}
+
+/* Light background theme circles */
+.bg-shapes2 .circle2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+.c21 {
+  width: 220px;
+  height: 220px;
+  background: #ffefd5; /* Light peach */
+  top: 5%;
+  left: 10%;
+}
+
+.c22 {
+  width: 180px;
+  height: 180px;
+  background: #ffe4b5; /* Moccasin */
+  top: 40%;
+  left: 70%;
+}
+
+.c23 {
+  width: 250px;
+  height: 250px;
+  background: #ffd9a3; /* Soft orange */
+  bottom: 10%;
+  left: 20%;
+}
+
+.c24 {
+  width: 150px;
+  height: 150px;
+  background: #ffeccc;
+  top: 65%;
+  right: 15%;
+}
+
+.c25 {
+  width: 200px;
+  height: 200px;
+  background: #fff1d6;
+  bottom: 20%;
+  right: 5%;
+}
+
+/* Softer blur overlay */
+.blur-overlay2 {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 240, 220, 0.25); /* very soft orange tint */
+}
